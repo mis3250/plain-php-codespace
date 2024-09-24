@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: basicArray.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>basicArray.php</h1>
+
+  <h2>Source of basicArray.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;
+Basic Array
+&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;Basic Array&lt;/h1&gt;
+
+&lt;?php 
+
+//simply assign values to array
+$camelPop[1] = "Somalia";
+$camelPop[2] = "Sudan";
+$camelPop[3] = "Mauritania";
+$camelPop[4] = "Pakistan";
+$camelPop[5] = "India";
+
+//output array values
+print "&lt;h3&gt;Top Camel Populations in the World&lt;/h3&gt;\n";
+print "&lt;p&gt; \n";
+for ($i = 1; $i &lt;= 5; $i++){
+  print "$i: $camelPop[$i]&lt;br /&gt;\n";
+} // end for loop
+print "&lt;/p&gt; \n";
+
+print &lt;&lt;&lt; HERE
+  &lt;p style = "text-decoration: italic"&gt;
+    Source: 
+		  &lt;a href = "http://www.fao.org/ag/aga/glipha/index.jsp"&gt;
+			Food and Agriculture Organization of the United Nations&lt;/a&gt;
+	&lt;/p&gt;
+	
+HERE;
+
+//use array function to load up array
+$binary = array("000", "001", "010", "011");
+
+print "&lt;h3&gt;Binary numbers&lt;/h3&gt;\n";
+print "&lt;p&gt; \n";
+for ($i = 0; $i &lt; count($binary); $i++){
+  print "$i: $binary[$i]&lt;br /&gt;\n";
+} // end for loop
+print "&lt;/p&gt; \n";
+
+?&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+    </pre>
+  </body>
+</html>
+

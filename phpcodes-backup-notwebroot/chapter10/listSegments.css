@@ -1,0 +1,28 @@
+h1 {
+  color:red;
+  text-align: center;
+}
+
+table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+
+th {
+  color: white;
+  background-color: blue;
+  width: 20%;
+}
+
+td {
+  color: white;
+  background-color: blue;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

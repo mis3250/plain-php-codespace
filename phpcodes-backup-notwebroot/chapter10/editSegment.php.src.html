@@ -1,0 +1,159 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: editSegment.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>editSegment.php</h1>
+
+  <h2>Source of editSegment.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;link rel = "stylesheet"
+      type = "text/css"
+      href = "listSegments.css" /&gt;
+      
+&lt;title&gt;Edit Segment&lt;/title&gt;
+&lt;style type = "text/css"&gt;
+body {
+  color:red
+}
+td {
+ color: white;
+ background-color: blue;
+ width: 20%;
+ height: 5em;
+ text-align: center;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php
+//include "connDB.php";
+$room = filter_input(INPUT_POST, "room");
+$room = mysql_escape_string($room);
+if (empty($room)){
+  $room = 0;
+} // end if
+
+//connect to database
+connect();
+
+
+$sql = "SELECT * FROM adventure WHERE id = '$room'";
+$result = mysql_query($sql) or die(mysql_error());
+$mainRow = mysql_fetch_assoc($result);
+$theText = $mainRow["description"];
+$roomName = $mainRow["name"];
+$northList = makeList("north", $mainRow["north"]);
+$westList = makeList("west", $mainRow["west"]);
+$eastList = makeList("east", $mainRow["east"]);
+$southList = makeList("south", $mainRow["south"]);
+$roomNum = $mainRow["id"];
+
+print &lt;&lt;&lt;HERE
+
+&lt;form action = "saveRoom.php"
+      method = "post"&gt;
+      
+&lt;table border = "1"&gt;
+&lt;tr&gt;
+  &lt;td colspan = "3"&gt;
+Room # $roomNum:
+    &lt;input type = "text"
+           name = "name"
+           value = "$roomName" /&gt;
+    &lt;input type = "hidden"
+           name = "id"
+           value = "$roomNum" /&gt;
+   &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&lt;/td&gt;
+  &lt;td&gt;$northList&lt;/td&gt;
+  &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;$westList&lt;/td&gt;
+  &lt;td&gt;
+    &lt;textarea rows = "5" 
+              cols = "30" 
+              name = "description"&gt;$theText&lt;/textarea&gt;
+  &lt;/td&gt;
+  &lt;td&gt;$eastList&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&lt;/td&gt;
+  &lt;td&gt;$southList&lt;/td&gt;
+  &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td colspan = "3"&gt;
+    &lt;input type = "submit"
+           value = "save this room" /&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;/form&gt;
+
+HERE;
+
+function makeList($dir, $current){
+  //make a list of all the places in the system
+  
+  //how do I indicate the currently selected item?
+  
+  global $conn;
+  $listCode = "&lt;select name = \"$dir\"&gt;\n";
+  $sql = "SELECT id, name FROM adventure";
+  $result = mysql_query($sql);
+  $rowNum = 0;
+  while ($row = mysql_fetch_assoc($result)){
+    $id = $row["id"];
+    $placeName = $row["name"];
+    $listCode .= "  &lt;option value = \"$id\"";
+    
+    //select this option if it's the one indicated
+    if ($rowNum == $current){
+      $listCode .= "selected = \"selected\" \n ";
+    } // end if
+    if ($placeName == ""){
+      $placeName = "&amp;nbsp;"; 
+    } // end if
+    $listCode .= "&gt;$placeName&lt;/option&gt;\n";
+    $rowNum++;
+  } // end while
+  $listCode .= "&lt;/select&gt; \n";
+  return $listCode;
+} // end makeList
+
+function connect(){
+  $conn  = mysql_connect("localhost", "user", "password") or die(mysql_error());
+  $select = mysql_select_db("ph_6", $conn);
+} // end function
+?&gt;
+
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+

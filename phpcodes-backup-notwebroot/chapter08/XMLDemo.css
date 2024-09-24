@@ -1,0 +1,10 @@
+dt {
+  float: left;
+  width: 5em;
+  clear: left;
+  font-weight: bold;
+}
+
+dd {
+  float: left;
+}

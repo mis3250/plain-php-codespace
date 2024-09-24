@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: story.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>story.php</h1>
+
+  <h2>Source of story.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Little Boy Who?&lt;/title&gt;
+&lt;style type = "text/css"&gt;
+  h1, h2 {
+    text-align: center;
+  }
+&lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Little Boy Who?&lt;/h1&gt;
+
+
+&lt;?php 
+
+$color = filter_input(INPUT_POST, "color");
+$instrument = filter_input(INPUT_POST, "instrument");
+$anim1 = filter_input(INPUT_POST, "anim1");
+$anim2 = filter_input(INPUT_POST, "anim2");
+$anim3 = filter_input(INPUT_POST, "anim3");
+$place = filter_input(INPUT_POST, "place");
+$vegetable = filter_input(INPUT_POST, "vegetable");
+$structure = filter_input(INPUT_POST, "structure");
+$action = filter_input(INPUT_POST, "action");
+
+print &lt;&lt;&lt;HERE
+&lt;h2&gt;
+Little Boy $color, come blow your $instrument!&lt;br /&gt;
+The $anim1's in the $place, the $anim2's in the $vegetable.&lt;br /&gt;
+Where's the boy that looks after the $anim3?&lt;br /&gt;
+He's under the $structure, $action.
+&lt;/h2&gt;
+HERE;
+?&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+    </pre>
+  </body>
+</html>
+

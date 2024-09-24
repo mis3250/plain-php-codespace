@@ -1,0 +1,66 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: hiUser.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>hiUser.php</h1>
+
+  <h2>Source of hiUser.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Hi User&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;  
+&lt;h1&gt;Hi User&lt;/h1&gt;
+
+&lt;?php 
+
+if (filter_has_var(INPUT_POST, "userName")){
+
+  // the form exists, so work with it
+  $userName = filter_input(INPUT_POST, "userName");
+  print "&lt;h2&gt;Hi there, $userName!&lt;/h2&gt; \n";
+
+} else {
+
+  //there's no input. Create the form
+  print &lt;&lt;&lt; HERE
+  &lt;form action = ""
+        method = "post"&gt;
+  &lt;fieldset&gt;
+    &lt;label&gt;Please enter your name&lt;/label&gt;
+    &lt;input type = "text"
+           name = "userName" /&gt;
+    &lt;button type = "submit"&gt;
+      submit
+    &lt;/button&gt;
+  &lt;/fieldset&gt;
+  &lt;/form&gt;
+HERE;
+
+} // end 'value exists' if  
+
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+
+    </pre>
+  </body>
+</html>
+

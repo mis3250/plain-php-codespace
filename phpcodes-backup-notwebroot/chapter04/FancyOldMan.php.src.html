@@ -1,0 +1,56 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: FancyOldMan.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>FancyOldMan.php</h1>
+
+  <h2>Source of FancyOldMan.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;
+Fancy Old Man
+&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;This Old Man with Arrays&lt;/h1&gt;
+&lt;?php 
+$place = array(
+  "",
+  "on my thumb",
+  "on my shoe",
+  "on my knee",
+  "on a door");
+  
+//print out song
+for ($verse = 1; $verse &lt;= 4; $verse++){
+print &lt;&lt;&lt;HERE
+ &lt;p&gt;
+ This old man, He played $verse &lt;br /&gt;
+ He played knick-knack $place[$verse] &lt;br /&gt;
+ ...with a knick, knack, paddy-whack &lt;br /&gt;
+ give a dog a bone &lt;br /&gt;
+ This old man came rolling home 
+ &lt;/p&gt;
+HERE;
+  } // end for loop
+
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+

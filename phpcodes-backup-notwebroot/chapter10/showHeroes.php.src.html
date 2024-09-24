@@ -1,0 +1,51 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: showHeroes.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>showHeroes.php</h1>
+
+  <h2>Source of showHeroes.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Show Heroes&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Show Heroes&lt;/h1&gt;
+&lt;p&gt;
+&lt;?php 
+//make the database connection
+$conn  = mysql_connect("localhost", "user", "password") or die (mysql_error());
+mysql_select_db("ph_6", $conn);
+$sql = "SELECT * FROM hero";
+$result = mysql_query($sql, $conn) or die(mysql_error());
+
+while($row = mysql_fetch_assoc($result)){
+  foreach ($row as $name =&gt; $value){
+    print "$name: $value &lt;br /&gt;\n";
+  } // end foreach
+  print "&lt;br /&gt; \n";
+} // end while
+
+
+?&gt;
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+    </pre>
+  </body>
+</html>
+

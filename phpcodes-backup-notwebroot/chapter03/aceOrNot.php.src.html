@@ -1,0 +1,52 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: aceOrNot.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>aceOrNot.php</h1>
+
+  <h2>Source of aceOrNot.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Ace or Not&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Ace or Not&lt;/h1&gt;
+&lt;h3&gt;Demonstrates if statement with else clause&lt;/h3&gt;
+&lt;div&gt;
+&lt;?php 
+
+$roll = rand(1,6);
+print "&lt;p&gt;You rolled a $roll&lt;/p&gt; \n";
+
+if ($roll == 1){
+  print "&lt;h1&gt;That's an ace!!!!!&lt;/h1&gt; \n";
+} else {
+  print "&lt;p&gt;That's not an ace...&lt;/p&gt; \n";
+} // end if
+
+print "&lt;img src = \"die$roll.jpg\" alt = \"$roll\" /&gt;";
+?&gt;
+
+&lt;p&gt;Refresh this page in the browser to roll another die.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+    </pre>
+  </body>
+</html>
+

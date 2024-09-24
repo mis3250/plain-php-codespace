@@ -1,0 +1,52 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: simpleCMS.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>simpleCMS.php</h1>
+
+  <h2>Source of simpleCMS.php</h2> 
+    <pre>
+&lt;?php 
+  //Simple CMS
+  //Extremely Simple CMS system
+  //Andy Harris for PHP/MySQL Adv. Beg 2nd Ed.
+  
+
+  //retrieve variables
+  if (filter_has_var(INPUT_GET, "menu")){
+    $menu = filter_input(INPUT_GET, "menu");
+  } else {
+    $menu = "menu.html";
+  } // end if
+
+  if (filter_has_var(INPUT_GET, "content")){
+    $content = filter_input(INPUT_GET, "content");
+  } else {
+    $content = "default.html";
+  } // end if
+
+  include ("top.html");
+
+  print "&lt;div class = \"menuPanel\"&gt; \n";
+  include ($menu);
+  print "&lt;/div&gt; \n";
+
+  print "&lt;div class = \"item\"&gt; \n";
+  include ($content);
+  print "&lt;/div&gt; \n";
+
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+  </body>
+</html>
+

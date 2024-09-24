@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: binaryDice.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>binaryDice.php</h1>
+
+  <h2>Source of binaryDice.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Binary Dice&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Binary Dice&lt;/h1&gt;
+&lt;h3&gt;Demonstrates multiple if structure&lt;/h3&gt;
+
+&lt;?php 
+
+$roll = rand(1,6);
+
+if ($roll == 1){
+  $binValue = "001";
+} else if ($roll == 2){
+  $binValue = "010";
+} else if ($roll == 3){
+  $binValue = "011";
+} else if ($roll == 4){
+  $binValue = "100";
+} else if ($roll == 5){
+  $binValue = "101";
+} else if ($roll == 6){
+  $binValue = "110";
+} else {
+  print "I don't know that one...";
+} // end if
+
+print &lt;&lt;&lt; HERE
+&lt;p&gt;You rolled a $roll&lt;/p&gt;
+
+&lt;p&gt;
+  &lt;img src = "die$roll.jpg"
+       alt = "die: $roll" /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+  In binary, that's $binValue.
+&lt;/p&gt;
+
+HERE;
+
+
+?&gt;
+&lt;p&gt;
+Refresh this page in the browser to roll another die.
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+    </pre>
+  </body>
+</html>
+

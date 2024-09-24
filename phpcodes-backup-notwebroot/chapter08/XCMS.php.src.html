@@ -1,0 +1,66 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: XCMS.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>XCMS.php</h1>
+
+  <h2>Source of XCMS.php</h2> 
+    <pre>
+&lt;?php 
+
+//XCMS
+//XML-Based Simple CMS system
+//Andy Harris for PHP/MySQL Adv. Beg 2nd Ed.
+// NOTE:  Requires simpleXML extensions in PHP 5.0!
+
+//get an XML file or load a default
+
+if (filter_has_var(INPUT_GET, "theXML")){
+  $theXML = filter_input(INPUT_GET, "theXML");
+} else {
+  $theXML = "main.xml";
+} // end if
+
+//Open up XML file 
+$xml = simplexml_load_file($theXML);
+
+if ( !$xml){
+  print ("there was a problem opening the XML");
+
+} else {
+
+  //include ($xml-&gt;css);
+  include($xml-&gt;top);
+
+  print "&lt;div class = \"menuPanel\"&gt; \n";
+  include ($xml-&gt;menu);
+  print "&lt;/div&gt; \n";
+
+  print "&lt;div class = \"item\"&gt; \n";
+  include ($xml-&gt;content);
+  print "&lt;/div&gt; \n";
+
+} // end if
+
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+
+
+    </pre>
+  </body>
+</html>
+

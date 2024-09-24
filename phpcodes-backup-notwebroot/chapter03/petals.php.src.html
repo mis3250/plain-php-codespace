@@ -1,0 +1,152 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: petals.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>petals.php</h1>
+
+  <h2>Source of petals.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;petals.php&lt;/title&gt;
+&lt;link rel = "stylesheet"
+      type = "text/css"
+      href = "petals.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Petals Around the Rose&lt;/h1&gt;
+
+&lt;?php
+
+printGreeting();
+printDice();
+printForm();
+
+//$numPetals = filter_input(INPUT_POST, "numPetals");
+
+function printGreeting(){
+  global $numPetals;
+  $guess = filter_input(INPUT_POST, "guess");
+  $numPetals = filter_input(INPUT_POST, "numPetals");
+  
+  if (!filter_has_var(INPUT_POST, "guess")){
+    print "&lt;h3&gt;Welcome to Petals Around the Rose&lt;/h3&gt;";
+  } else if ($guess == $numPetals){
+    print "&lt;h3&gt;You Got It!&lt;/h3&gt;";
+  } else {
+
+    print &lt;&lt;&lt;HERE
+
+      &lt;h3&gt;from last try: &lt;/h3&gt;
+      &lt;p&gt;
+        you guessed: $guess
+      &lt;/p&gt;
+      &lt;p&gt;
+        -and the correct answer was: $numPetals petals around the rose
+      &lt;/p&gt;
+HERE;
+
+  } // end if
+
+} // end printGreeting
+
+function showDie($value){
+  print &lt;&lt;&lt;HERE
+  &lt;img src = "die$value.jpg"
+       height = "100"
+       width = "100"
+       alt = "die: $value" /&gt;
+
+HERE;
+} // end showDie
+
+function printDice(){
+  global $numPetals;
+
+  print "&lt;h3&gt;New Roll:&lt;/h3&gt; \n";
+  $numPetals = 0;
+  
+  $die1 = rand(1,6);
+  $die2 = rand(1,6);
+  $die3 = rand(1,6);
+  $die4 = rand(1,6);
+  $die5 = rand(1,6);
+  
+  print "&lt;p&gt; \n";
+	showDie($die1);
+  showDie($die2);
+  showDie($die3);
+  showDie($die4);
+  showDie($die5);
+  print "&lt;/p&gt; \n";
+  
+  calcNumPetals($die1);
+  calcNumPetals($die2);
+  calcNumPetals($die3);
+  calcNumPetals($die4);
+  calcNumPetals($die5);
+
+} // end printDice
+
+
+function calcNumPetals($value){
+  global $numPetals;
+
+  switch ($value) {
+    case 3:
+      $numPetals += 2;
+      break;
+    case 5:
+      $numPetals += 4;
+      break;
+  } // end switch
+
+} // end calcNumPetals
+
+function printForm(){
+  global $numPetals;
+  
+  print &lt;&lt;&lt;HERE
+
+  &lt;h3&gt;How many petals around the rose?&lt;/h3&gt;
+
+  &lt;form action = ""
+	      method = "post"&gt;
+	&lt;fieldset&gt;
+  &lt;input type = "text"
+         name = "guess"
+         value = "0" /&gt;
+  &lt;input type = "hidden"
+         name = "numPetals"
+         value = "$numPetals" /&gt;
+  &lt;br /&gt;
+  &lt;input type = "submit" /&gt;
+  &lt;/fieldset&gt;
+  &lt;/form&gt;
+  &lt;p&gt;
+    &lt;a href = "petalHelp.html"&gt;
+    give me a hint&lt;/a&gt;
+  &lt;/p&gt;
+HERE;
+
+} // end printForm
+
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+    </pre>
+  </body>
+</html>
+

@@ -1,0 +1,89 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: listSegments.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>listSegments.php</h1>
+
+  <h2>Source of listSegments.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;link rel = "stylesheet"
+      type = "text/css"
+      href = "listSegments.css" /&gt;
+      
+&lt;title&gt;List Segments&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;List Segments&lt;/h1&gt;
+&lt;?php   
+
+connect();
+
+$sql = "SELECT * FROM adventure";
+$result = mysql_query($sql) or die(mysql_error());
+
+while ($row = mysql_fetch_assoc($result)){
+  print &lt;&lt;&lt;HERE
+&lt;form action = "editSegment.php"
+      method = "post"&gt;
+&lt;table border = "1"&gt;
+
+HERE;
+//  print "&lt;table border = \"1\"&gt;\n";
+
+  foreach($row as $key=&gt;$value){
+    //print "$key: $value&lt;br&gt;\n";
+    $roomNum = $row["id"];
+    print &lt;&lt;&lt;HERE
+  &lt;tr&gt;
+    &lt;th&gt;$key&lt;/th&gt;
+    &lt;td&gt;$value&lt;/td&gt;
+  &lt;/tr&gt;
+  
+HERE;
+
+  } // end foreach
+  print &lt;&lt;&lt;HERE
+  &lt;tr&gt;
+    &lt;td colspan = "2"&gt;
+      &lt;input type = "hidden"
+             name = "room"
+             value = "$roomNum" /&gt;
+      &lt;button type = "submit"&gt;
+        edit this room
+      &lt;/button&gt;      
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;/form&gt;
+HERE;
+  
+} // end while
+
+function connect(){
+  global $conn, $select;
+  $conn  = mysql_connect("localhost", "user", "password") or die(mysql_error());
+  $select = mysql_select_db("ph_6", $conn);
+} // end function
+
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+

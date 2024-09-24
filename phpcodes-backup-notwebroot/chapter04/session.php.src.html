@@ -1,0 +1,68 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: session.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>session.php</h1>
+
+  <h2>Source of session.php</h2> 
+    <pre>
+&lt;?php session_start() ?&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;
+persistence demo
+&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;session.php&lt;/h1&gt;
+
+&lt;?php 
+  if (isset($_SESSION["counter"])){
+    $counter = $_SESSION["counter"];
+  } else {
+    $counter = 0;
+  } // end if
+  $counter++;
+  print "&lt;h2&gt;Counter: $counter&lt;/h2&gt; \n";
+
+   
+  //store new data in counter
+  $_SESSION["counter"] = $counter;
+
+  print &lt;&lt;&lt; HERE
+&lt;form action = ""
+      method = "post"&gt;
+  &lt;p&gt;
+    &lt;button type = "submit"&gt;
+      count
+    &lt;/button&gt;
+  &lt;/p&gt;
+&lt;/form&gt;
+
+HERE;
+
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+    </pre>
+  </body>
+</html>
+

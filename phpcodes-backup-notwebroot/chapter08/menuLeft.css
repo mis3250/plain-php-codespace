@@ -1,0 +1,55 @@
+/*
+     this style places a menu on the left and an item section in
+     the center.  Intended for use with CMS demos for
+     PHP/MySql for the Abs. Beg, Andy Harris
+*/
+
+body {
+  background-image: url("backgroundRed.png");
+}
+
+h1 {
+  color: #0B0B3B;
+  font-family: "Comic Sans MS";
+  text-align: right;
+  background-image: url("apply_computers.jpg");
+  background-position: left;
+  background-repeat: no-repeat;
+  height: 100px;
+  border-bottom: 3px double white;
+
+}
+
+.menuPanel {
+  float: left; 
+  width: 15%;
+}
+
+.menuPanel li {
+  list-style-type: square;
+  margin-left: -2em;
+  text-align: center;
+  color: yellow;
+}
+
+.menuPanel a {
+  color: blue;
+  border: 5px red outset;
+  text-decoration: none;
+  display: block;
+}
+
+.menuPanel a:hover {
+  border: 5px red inset;
+  color: yellow;
+  border-color: yellow;
+}
+
+.item {
+  float: left;
+  width: 70%;
+  padding-left: 3%;
+  margin-left: 2%;
+  background-color: blue;
+  color: red
+}

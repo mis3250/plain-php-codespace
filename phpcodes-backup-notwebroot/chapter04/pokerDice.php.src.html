@@ -1,0 +1,292 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: pokerDice.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>pokerDice.php</h1>
+
+  <h2>Source of pokerDice.php</h2> 
+    <pre>
+&lt;?php session_start() ?&gt;
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;poker dice&lt;/title&gt;
+&lt;link rel = "stylesheet"
+      type = "text/css"
+      href = "pd.css" /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;h1&gt;pokerDice.php&lt;/h1&gt;
+
+&lt;?php
+
+
+//set things up if it's the first time here, otherwise play
+if (filter_has_var(INPUT_POST, "doNext")){
+  play();
+} else {
+  startGame();
+} // end if
+
+function play(){
+  //alternate control between firstPass and secondPass
+  //functions based on $doNext
+  $doNext = filter_input(INPUT_POST, "doNext");
+
+  if ($doNext == "firstPass"){
+    firstPass();
+  } else {
+    secondPass();
+    evaluate();
+  } // end if
+} // end play
+
+function startGame(){
+  // if it's the first time here, set up initial cash,
+  // and do firstPass
+  $cash = 100;
+  $_SESSION["cash"] = 100;
+  firstPass();  
+} // end reset
+
+function firstPass(){
+  $cash = $_SESSION["cash"];
+  print &lt;&lt;&lt; HERE
+      &lt;h2&gt;First Pass&lt;/h2&gt;
+        &lt;form method = "post"
+        action = ""&gt;
+    &lt;fieldset&gt;
+
+HERE;
+
+  for ($i = 0; $i &lt; 5; $i++){
+    $die[$i] = rand(1, 6);
+    //print "$i: $die[$i] ";
+    print &lt;&lt;&lt; HERE
+
+      &lt;div class = "dieImage"&gt;
+        &lt;img src = "die$die[$i].jpg"
+             alt = "$i" /&gt;
+        &lt;input type = "checkbox"
+               name = "keepIt[$i]"
+               value = "$die[$i]" /&gt;
+      &lt;/div&gt;
+      
+HERE;
+   
+  } // end for
+  print &lt;&lt;&lt; HERE
+      &lt;input type = "hidden"
+             name = "doNext"
+             value = "secondPass" /&gt;
+             
+      &lt;button type = "submit"&gt;
+        go
+      &lt;/button&gt;
+      &lt;p&gt;Cash: $cash&lt;/p&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+  
+HERE;
+  $_SESSION["cash"] = $cash;
+} // end firstPass
+
+function secondPass(){
+  global $die;
+  //get cash from session variable
+  $cash = $_SESSION["cash"];
+  //print "cash: $cash &lt;br /&gt;";
+    
+  print &lt;&lt;&lt; HERE
+  &lt;h2&gt;Second Pass&lt;/h2&gt;           
+  &lt;form method = "post"
+        action = ""&gt;
+    &lt;fieldset&gt;
+
+HERE;
+  //check to see if keepIt exists 
+  // (which happens if any of the checkboxes is checked)
+  if (filter_has_var(INPUT_POST, "keepIt")){
+    //pull all values from form
+    $formVals = filter_input_array(INPUT_POST);
+    //extract $keepIt array (easiest way to handle array input)
+    $keepIt = $formVals["keepIt"];
+  
+    for ($i = 0; $i &lt; 5; $i++){
+      //if any values are empty, replace them with zero
+      if (empty($keepIt[$i])){
+        $keepIt[$i] = 0;
+      } // end if
+      //print "$i) $keepIt[$i] &lt;br /&gt;";
+    } // end for loop
+  } else {
+    //keepIt doesn't exist, so make it with
+    //all zero values
+    $keepIt = array(0, 0, 0, 0, 0);
+  } // end if 
+  
+       
+  for ($i = 0; $i &lt; 5; $i++){
+    //replace the image if the current value
+    //of keepIt is zero
+    if ($keepIt[$i] == 0){  
+      $die[$i] = rand(1, 6);
+    } else {
+      $die[$i] = $keepIt[$i];
+    } // end if
+    
+    print &lt;&lt;&lt; HERE
+      &lt;div class = "dieImage"&gt;
+        &lt;img src = "die$die[$i].jpg"
+             alt = "$i" /&gt;
+      &lt;/div&gt;
+      
+HERE;
+   
+  } // end for
+  print &lt;&lt;&lt; HERE
+      &lt;input type = "hidden"
+             name = "doNext"
+             value = "firstPass" /&gt;
+      &lt;button type = "submit"&gt;
+        go
+      &lt;/button&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+  
+HERE;
+
+} // end secondPass
+
+function evaluate(){
+  global $die;
+  //set up payoff
+  $payoff = 0;
+  //create $numVals
+  for($i = 1; $i &lt;= 6; $i++){
+    $numVals[$i] = 0;
+  } // end for loop
+  
+  
+  //count the dice
+  for ($theVal = 1; $theVal &lt;= 6; $theVal++){
+  	for ($dieNum = 0; $dieNum &lt; 5; $dieNum++){
+  	  if ($die[$dieNum] == $theVal){
+  	    $numVals[$theVal]++;
+  	  } // end if
+  	} // end dieNum for loop
+  } // end theVal for loop
+  
+  //print out results
+  //  for ($i = 1; $i &lt;= 6; $i++){
+  //  	print "$i:  $numVals[$i]&lt;br /&gt;\n";
+  //  } // end for loop
+  
+  //count how many pairs, threes, fours, fives
+  $numPairs = 0;
+  $numThrees = 0;
+  $numFours = 0;
+  $numFives = 0;
+  
+  for ($i = 1; $i &lt;= 6; $i++){
+    switch ($numVals[$i]){
+      case 2:
+        $numPairs++;
+        break;
+      case 3:
+        $numThrees++;
+        break;
+      case 4:
+        $numFours++;
+        break;
+      case 5:
+        $numFives++;
+        break;
+    } // end switch
+  } // end for loop
+
+  print "&lt;p&gt; \n";
+  
+  //check for two pairs
+  if ($numPairs == 2){
+    print "You have two pairs!&lt;br /&gt;\n";
+    $payoff = 1;
+  } // end if
+  
+  //check for three of a kind and full house
+  if ($numThrees == 1){
+    if ($numPairs == 1){
+      //three of a kind and a pair is a full house
+      print "You have a full house!&lt;br /&gt;\n";
+      $payoff = 5;
+    } else {
+      print "You have three of a kind!&lt;br /&gt;\n";
+      $payoff = 2;
+    } // end 'pair' if
+  } // end 'three' if
+
+  //check for four of a kind
+  if ($numFours == 1){
+    print "You have four of a kind!&lt;br /&gt;\n";
+    $payoff = 5;
+  } // end if
+  
+  //check for five of a kind
+  if ($numFives == 1){
+    print "You got five of a kind!&lt;br /&gt;\n";
+    $payoff = 10;
+  } // end if
+  
+  //check for straights
+  if (($numVals[1] == 1)
+    &amp;&amp; ($numVals[2] == 1)
+    &amp;&amp; ($numVals[3] == 1)
+    &amp;&amp; ($numVals[4] == 1)
+    &amp;&amp; ($numVals[5] == 1)){
+    print "You have a straight!&lt;br /&gt;\n";
+    $payoff = 10;
+  } // end if
+
+  if (($numVals[2] == 1)
+    &amp;&amp; ($numVals[3] == 1)
+    &amp;&amp; ($numVals[4] == 1)
+    &amp;&amp; ($numVals[5] == 1)
+    &amp;&amp; ($numVals[6] == 1)){
+    print "You have a straight!&lt;br /&gt;\n";
+    $payoff = 10;
+          
+  } // end if
+  $cash = $_SESSION["cash"];
+  //print "Cash: $cash&lt;br /&gt;\n";
+  //subtract some money for this roll
+  $cash -= 2;
+  print "You bet 2&lt;br /&gt;\n";
+  print "Payoff is $payoff&lt;br /&gt;\n";
+  $cash += $payoff;
+  print "Cash: $cash&lt;br /&gt;\n";
+	print "&lt;/p&gt; \n"; 
+	
+	//store cash back to session:
+	$_SESSION["cash"] = $cash;
+} // end evaluate
+
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+

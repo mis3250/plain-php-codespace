@@ -1,0 +1,95 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: readArray.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>readArray.php</h1>
+
+  <h2>Source of readArray.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+	&lt;head&gt;
+		&lt;meta http-equiv="content-type" content="text/xml; charset=utf-8" /&gt;
+    &lt;link rel = "stylesheet"
+          type = "text/css"
+          href = "readArray.css" /&gt;
+          
+		&lt;title&gt;Read Array&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+
+&lt;?php
+
+if (filter_has_var(INPUT_POST, "people")){
+	showPeople();
+} else {
+	printForm();
+} // end if
+
+function printForm(){
+
+  print &lt;&lt;&lt; HERE
+  &lt;h2&gt;Type in your people here...&lt;/h2&gt;
+	&lt;form action = ""
+	      method = "post"&gt;
+    &lt;fieldset&gt;
+  	  &lt;input type = "text"
+  	         name = "people[0]"
+  			 value = "Andy" /&gt;
+  	  &lt;input type = "text"
+  	         name = "people[1]"
+  			 value = "Heather" /&gt;
+  	  &lt;input type = "text"
+  	         name = "people[2]"
+  			 value = "Elizabeth" /&gt;
+  	  &lt;input type = "text"
+  	         name = "people[3]"
+  			 value = "Matthew" /&gt;
+  	  &lt;input type = "text"
+  	         name = "people[4]"
+  			 value = "Jacob" /&gt;
+  	  &lt;input type = "text"
+  	         name = "people[5]"
+  			 value = "Benjamin" /&gt;
+  	  &lt;button&gt;
+  	    submit
+  	  &lt;/button&gt;
+  	&lt;/fieldset&gt;
+  &lt;/form&gt;
+HERE;
+
+} // end printForm
+
+function showPeople(){
+  $formData = filter_input_array(INPUT_POST);
+  $people = $formData["people"];
+
+  print "&lt;h2&gt;Your People&lt;/h2&gt; \n";
+  print "&lt;pre&gt;";
+  print_r($people);
+  print "&lt;/pre&gt;";
+  
+  print "&lt;ul&gt; \n";
+  for ($i = 0; $i &lt; count($people); $i++){
+    print "  &lt;li&gt;$people[$i] &lt;/li&gt; \n";
+  } // end for loop
+  print "&lt;/ul&gt; \n";
+} // end showPeople
+?&gt;
+		
+	&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Link Demo</title>
+</head>
+<body>
+<h1>Link Demo</h1>
+
+<ul>
+  <li><a href = "hiUser.php?userName=Elizabeth">Hi Elizabeth</a></li>
+  <li><a href = "http://www.google.com/search?q=php">
+      Google search for "php"</a></li>
+  <li><a href = 
+      "http://www.google.com/search?q=php beginner&num=50">
+       50 "php beginner" sites</a> from google</li>
+  <li><a href =  
+       "http://forecast.weather.gov/zipcity.php?inputstring=46038">
+       National Weather Service Forecast</a> for my neighborhood.</li>
+
+</ul>
+
+<div style = "color:red; 
+              font-family:comic sans ms">
+Note:
+The "Hi Elizabeth" link expects to be in the same directory as
+hiUser.php, and should be run from a web server with PHP access.  The
+other queries will work on any machine with a current web connection.
+Also, I deliberately left link data unencoded for clarity. This causes validation errors, but they do not cause any problems in the code.
+</div>
+
+</body>
+</html>
+
+

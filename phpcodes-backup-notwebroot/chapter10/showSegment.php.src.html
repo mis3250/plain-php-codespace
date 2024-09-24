@@ -1,0 +1,113 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: showSegment.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>showSegment.php</h1>
+
+  <h2>Source of showSegment.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Show Adventure&lt;/title&gt;
+&lt;link rel = "stylesheet"
+      type = "text/css"
+      href = "showSegment.css" /&gt;
+      
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;?php 
+//connect to database
+$conn  = mysql_connect("localhost", "user", "password") or die(mysql_connect());
+
+//get input
+$room = filter_input(INPUT_POST, "room");
+$room = mysql_real_escape_string($room);
+if (empty($room)){
+  $room = 1;
+} // end if
+
+//prepare the query
+$select = mysql_select_db("ph_6", $conn);
+$sql = "SELECT * FROM adventure WHERE id = '$room'";
+$result = mysql_query($sql)or die(mysql_connect());
+$mainRow = mysql_fetch_assoc($result);
+$theText = $mainRow["description"];
+
+$northButton = buildButton("north");
+$eastButton = buildButton("east");
+$westButton = buildButton("west");
+$southButton = buildButton("south");
+$roomName = $mainRow["name"];
+
+print &lt;&lt;&lt;HERE
+&lt;h1&gt;$roomName&lt;/h1&gt;
+&lt;form method = "post"
+      action = ""&gt;
+&lt;table border = "1"&gt;
+&lt;tr&gt;
+  &lt;td&gt;&lt;/td&gt;
+  &lt;td&gt;$northButton&lt;/td&gt;
+  &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;$eastButton&lt;/td&gt;
+  &lt;td&gt;$theText&lt;/td&gt;
+  &lt;td&gt;$westButton&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;&lt;/td&gt;
+  &lt;td&gt;$southButton&lt;/td&gt;
+  &lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+&lt;p&gt;
+&lt;input type = "submit"
+       value = "go"
+       id = "btnSubmit" /&gt;
+&lt;/p&gt;
+&lt;/form&gt;
+
+HERE;
+
+function buildButton($dir){
+  //builds a button for the specified direction
+  global $mainRow, $conn;
+  $newID = $mainRow[$dir];
+  //print "newID is $newID";
+  $query = "SELECT name FROM adventure WHERE id = $newID";
+  $result = mysql_query($query, $conn);
+  $row = mysql_fetch_assoc($result);
+  $roomName = $row["name"];
+
+  $buttonText = &lt;&lt;&lt; HERE
+  &lt;input type = "radio"
+         name = "room"
+         value = "$newID" /&gt;$roomName
+
+HERE;
+
+  return $buttonText;
+
+} // end build button
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+

@@ -1,0 +1,48 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: ace.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>ace.php</h1>
+
+  <h2>Source of ace.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Ace!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Ace!&lt;/h1&gt;
+&lt;h3&gt;Demonstrates if statement&lt;/h3&gt;
+&lt;div&gt;
+&lt;?php 
+$roll = rand(1,6);
+print "You rolled a $roll";
+
+if ($roll == 1){
+  print "&lt;h1&gt;That's an ace!!!!!&lt;/h1&gt;";
+} // end if
+
+print "&lt;br /&gt;";
+print "&lt;img src = \"die$roll.jpg\" alt = \"die: $roll\" /&gt;";
+?&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Refresh this page in the browser to roll another die.
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+

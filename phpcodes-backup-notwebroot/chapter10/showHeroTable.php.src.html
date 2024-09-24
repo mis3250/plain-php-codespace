@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: showHeroTable.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>showHeroTable.php</h1>
+
+  <h2>Source of showHeroTable.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Show Heros&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Show Heros&lt;/h1&gt;
+&lt;?php 
+//make the database connection
+$conn  = mysql_connect("localhost", "user", "password") or die (mysql_error());
+mysql_select_db("ph_6", $conn);
+
+//create a query
+$sql = "SELECT * FROM hero";
+$result = mysql_query($sql, $conn) or die(mysql_error);
+
+print "&lt;table border = \"1\"&gt;\n";
+
+//get field names
+print "&lt;tr&gt;\n";
+while ($field = mysql_fetch_field($result)){
+  print "  &lt;th&gt;$field-&gt;name&lt;/th&gt;\n";
+} // end while
+print "&lt;/tr&gt;\n\n";
+
+//get row data as an associative array
+while ($row = mysql_fetch_assoc($result)){
+  print "&lt;tr&gt;\n";
+  //look at each field
+  foreach ($row as $col=&gt;$val){
+    print "  &lt;td&gt;$val&lt;/td&gt;\n";
+  } // end foreach
+  print "&lt;/tr&gt;\n\n";
+}// end while
+
+print "&lt;/table&gt;\n";
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+    </pre>
+  </body>
+</html>
+

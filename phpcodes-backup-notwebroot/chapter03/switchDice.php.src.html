@@ -1,0 +1,80 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: switchDice.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>switchDice.php</h1>
+
+  <h2>Source of switchDice.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Switch Dice&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;SwitchDice&lt;/h1&gt;
+&lt;h3&gt;Demonstrates switch structure&lt;/h3&gt;
+
+&lt;?php 
+$roll = rand(1,6);
+
+switch ($roll){
+  case 1:
+    $romValue = "I";
+    break;
+  case 2:
+    $romValue = "II";
+    break;
+  case 3:
+    $romValue = "III";
+    break;
+  case 4:
+    $romValue = "IV";
+    break;
+  case 5:
+    $romValue = "V";
+    break;
+  case 6:
+    $romValue = "VI";
+    break;
+  default:
+    print "This is an illegal die!";
+} // end switch
+
+
+print &lt;&lt;&lt; HERE
+
+&lt;p&gt;You rolled a $roll.&lt;/p&gt;
+
+&lt;p&gt;
+  &lt;img src = "die$roll.jpg"
+       alt = "die: $roll" /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;In Roman numerals, that's $romValue.&lt;/p&gt;
+
+HERE;
+
+?&gt;
+&lt;p&gt;
+Refresh this page in the browser to roll another die.
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+    </pre>
+  </body>
+</html>
+

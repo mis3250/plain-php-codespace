@@ -1,0 +1,87 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: param.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>param.php</h1>
+
+  <h2>Source of param.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Param Old Man&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Param Old Man &lt;/h1&gt;
+&lt;h3&gt;Demonstrates use of function parameters&lt;/h3&gt;
+&lt;?php 
+
+print verse(1);
+print chorus();
+print verse(2);
+print chorus();
+print verse(3);
+print chorus();
+print verse(4);
+print chorus();
+
+
+function verse($stanza){
+  switch ($stanza){
+    case 1:
+      $place = "thumb";
+      break;
+    case 2:
+      $place = "shoe";
+      break;
+    case 3:
+      $place = "knee";
+      break;
+    case 4:
+      $place = "door";
+      break;
+    default:
+      $place = "I don't know where";
+  } // end switch
+
+  $output = &lt;&lt;&lt;HERE
+&lt;p&gt;
+  This old man, he played $stanza&lt;br /&gt;
+  He played knick-knack on my $place
+&lt;/p&gt;
+HERE;
+  return $output;
+} // end verse
+
+function chorus(){
+  $output = &lt;&lt;&lt;HERE
+&lt;p&gt;
+  ...with a knick-knack&lt;br /&gt;
+  paddy-whack&lt;br /&gt;
+  give a dog a bone&lt;br /&gt;
+  this old man came rolling home&lt;br /&gt;
+&lt;/p&gt;
+HERE;
+  return $output;
+} // end chorus
+
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+    </pre>
+  </body>
+</html>
+

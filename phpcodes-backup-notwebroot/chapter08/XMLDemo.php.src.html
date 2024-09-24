@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: XMLDemo.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>XMLDemo.php</h1>
+
+  <h2>Source of XMLDemo.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;XML Demo&lt;/title&gt;
+&lt;link rel = "stylesheet"
+      type = "text/css"
+      href = "XMLDemo.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;XML Demo&lt;/h1&gt;
+
+&lt;?php 
+
+//load up main.xml and examine it
+
+$xml = simplexml_load_file("main.xml");
+
+print "&lt;h3&gt;original XML&lt;/h3&gt; \n";
+
+$xmlText = $xml-&gt;asXML();
+$xmlText = htmlentities($xmlText);
+print "&lt;pre&gt;$xmlText&lt;/pre&gt; \n";
+
+print "&lt;h3&gt;extract a named element&lt;/h3&gt; \n";
+print "&lt;p&gt;$xml-&gt;title&lt;/p&gt; \n";
+
+
+print "&lt;h3&gt;Extract as an array&lt;/h3&gt; \n";
+print "&lt;dl&gt; \n";
+foreach ($xml-&gt;children() as $name =&gt; $value){
+  print "  &lt;dt&gt;$name:&lt;/dt&gt;   &lt;dd&gt;$value&lt;/dd&gt; \n";
+} // end foreach
+
+print "&lt;/dl&gt; \n";
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+    </pre>
+  </body>
+</html>
+

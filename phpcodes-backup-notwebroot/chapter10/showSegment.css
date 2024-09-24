@@ -1,0 +1,18 @@
+h1 {
+  color:red;
+  text-align: center;
+}
+
+td {
+  color: white;
+  background-color: blue;
+  width: 20%;
+  height: 3em;
+  font-size: 20pt
+}
+
+#btnSubmit {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

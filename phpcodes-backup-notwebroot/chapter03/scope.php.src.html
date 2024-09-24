@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: scope.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>scope.php</h1>
+
+  <h2>Source of scope.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;Scope Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Scope Demo&lt;/h1&gt;
+&lt;h2&gt;Demonstrates variable scope&lt;/h2&gt;
+
+&lt;?php 
+
+$a = "I have a value";
+$b = "I have a value";
+
+print &lt;&lt;&lt;HERE
+  &lt;p&gt;
+  outside the function, &lt;br /&gt;
+  \$a is "$a", and&lt;br /&gt;
+  \$b is "$b"
+  &lt;/p&gt;
+HERE;
+
+myFunction();
+
+function myFunction(){
+
+  //make $a global, but not $b
+  global $a;
+
+  print &lt;&lt;&lt;HERE
+    &lt;p&gt;
+    inside the function, &lt;br /&gt;
+    \$a is "$a", and&lt;br /&gt;
+    \$b is "$b"
+		&lt;/p&gt;
+HERE;
+} // end myFunction
+
+?&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+

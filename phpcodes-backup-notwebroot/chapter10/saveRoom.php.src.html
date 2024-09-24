@@ -1,0 +1,83 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+    <title>Source code listing: saveRoom.php</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "../phpMas.css" />
+  </head>
+  <body>
+    <h1>saveRoom.php</h1>
+
+  <h2>Source of saveRoom.php</h2> 
+    <pre>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html lang="EN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;SaveRoom.php&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;?php 
+//Once a room has been edited by editSegment, this program
+//updates the database accordingly.
+
+//connect to database
+$conn  = mysql_connect("localhost", "user", "password") or die(mysql_error());
+$select = mysql_select_db("ph_6", $conn);
+
+//pull data from form
+$name = filter_input(INPUT_POST, "name");
+$description = filter_input(INPUT_POST, "description");
+$north = filter_input(INPUT_POST, "north");
+$east = filter_input(INPUT_POST, "east");
+$south = filter_input(INPUT_POST, "south");
+$west = filter_input(INPUT_POST, "west");
+$id = filter_input(INPUT_POST, "id");
+
+//clean up all data
+$name = mysql_real_escape_string($name);
+$description = mysql_real_escape_string($description);
+$north = mysql_real_escape_string($north);
+$east = mysql_real_escape_string($east);
+$south = mysql_real_escape_string($south);
+$west = mysql_real_escape_string($west);
+$id = mysql_real_escape_string($id);
+
+$sql = &lt;&lt;&lt; END
+
+UPDATE adventure
+SET
+  name = '$name',
+  description = '$description',
+  north = $north,
+  east = $east,
+  south = $south,
+  west = $west
+WHERE
+  id = $id;
+
+END;
+
+print "&lt;pre&gt;$sql&lt;/pre&gt; \n";
+
+$result = mysql_query($sql) or die(mysql_error());
+if ($result){
+  print "&lt;h3&gt;$name room updated successfully&lt;/h3&gt;\n";
+  print "&lt;p&gt;&lt;a href = \"listSegments.php\"&gt;view the rooms&lt;/a&gt;&lt;/p&gt;\n";
+} else {
+  print "&lt;h3&gt;There was a problem with the database&lt;/h3&gt;\n";
+} // end if
+
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+    </pre>
+  </body>
+</html>
+
