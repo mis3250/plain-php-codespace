@@ -1,0 +1,57 @@
+   Commands for github codespaces instance
+   
+    4  lsb_release -a
+    5  adduser mis481
+    6  usermod -aG sudo mis481
+    7  apt update
+	   apt install sudo
+		
+   19  sudo apt install apache2 -y
+   22  service apache2 status
+   23  sudo service apache2 start
+
+   50  sudo apt update
+   51  sudo apt install mariadb-server -y
+   52  service mariadb status
+   53  sudo service mariadb start
+	   sudo mariadb -u root -p
+ 
+	CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal';
+	CREATE DATABASE drupal;
+	GRANT ALL PRIVILEGES ON drupal.* TO 'drupal'@'localhost';
+	FLUSH PRIVILEGES;
+	EXIT;
+ 
+   CREATE USER 'mis481'@localhost IDENTIFIED BY 'mis481';
+   SELECT User FROM mysql.user;
+   
+   To grant all privileges to mis481:
+   GRANT ALL PRIVILEGES ON *.* TO 'mis481'@localhost IDENTIFIED BY 'mis481';
+   FLUSH PRIVILEGES;
+ 
+   55  php -v
+   67  sudo apt install php libapache2-mod-php php-mysql -y
+   71  sudo apt -y install php php-cgi php-mysqli php-pear php-mbstring libapache2-mod-php php-common php-phpseclib php-mysql
+	8  sudo service apache2 restart
+   60  sudo nano /var/www/html/info.php
+   
+   <?php
+   phpinfo();
+   
+   
+   62  pwd
+   63  cd /var/www/html/
+
+   69  sudo apt install wget -y
+   77  wget -P Downloads https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+   78  ls
+   79  cd Downloads/
+   80  ls
+   81  sudo mkdir /var/www/html/phpMyAdmin
+   82  sudo tar xvf phpMyAdmin-latest-all-languages.tar.gz --strip-components=1 -C /var/www/html/phpMyAdmin
+   83  sudo cp /var/www/html/phpMyAdmin/config.sample.inc.php /var/www/html/phpMyAdmin/config.inc.php
+   84  sudo nano /var/www/html/phpMyAdmin/config.inc.php
+   85  sudo chmod 660 /var/www/html/phpMyAdmin/config.inc.php
+   86  sudo chown -R www-data:www-data /var/www/html/phpMyAdmin
+   87 sudo  service apache2 restart
+   
