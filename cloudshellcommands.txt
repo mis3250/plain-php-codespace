@@ -1,0 +1,156 @@
+ *********************************************
+ 
+ AWS cloudshell commands
+ 
+ php --version
+    2  php sudo yum install php
+    3  sudo yum install php
+    4  composer
+    5  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    6  php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+    7  php composer-setup.php
+    8  php -r "unlink('composer-setup.php');"
+    9  composer
+   10  ls
+   11  sudo mv composer.phar /usr/local/bin/composer
+   12  composer
+   13  php --version
+   14  ssh-keygen -t rsa -m PEM
+   15  cat /home/cloudshell-user/.ssh/id_rsa.pub
+   16  terminus auth:login --machine-token=39HvZIchfxSgws6zfU2EN2M8-WZ9Ud2LzwoRDq_g8jC-s
+   17  mkdir -p ~/terminus && cd ~/terminus
+   18  curl -L https://github.com/pantheon-systems/terminus/releases/download/3.5.2/terminus.phar --output terminus
+   19  chmod +x terminus
+   20  ./terminus self:update
+   21  sudo ln -s ~/terminus/terminus /usr/local/bin/terminus
+   22  terminus
+   23  terminus auth:login --machine-token=39HvZIchfxSgws6zfU2EN2M8-WZ9Ud2LzwoRDq_g8jC-s
+   24  git --version
+   25  ls
+   26  df-H
+   27  df -H
+   28  pwd
+   29  git clone ssh://codeserver.dev.de9789cd-3ed3-4e62-8953-1b5df5ef98a3@codeserver.dev.de9789cd-3ed3-4e62-8953-1b5df5ef98a3.drush.in:2222/~/repository.git -b master testreplitmis481
+   30  ls
+   31  cd testreplitmis481/
+   32  ls
+   33  df -H
+   34  composer require 'drupal/gin:3.x-dev@dev'
+   35  sudo apt install php8.3-gd
+   36  sudo yum  install php8.3-gd
+   37  composer require 'drupal/gin:3.x-dev@dev'
+   38  sudo yum  install php8.3-zip
+   39  composer require 'drupal/gin:3.x-dev@dev'
+   40  composer require 'drupal/webform:^6.2'
+   41  ls
+   42  sudo nano composer.json 
+   43  composer install
+   44  git status
+   45  git add .
+   46  git commit . -m "test from aws cloudshell"
+   47  git config --global user.email "mis481ecommerce@gmail.com"
+   48  git config --global user.name "ZZ Shi"
+   49  git commit . -m "test from aws cloudshell"
+   50  git push
+   51  df -H
+   52  history
+   
+   ****************************************************
+   Commands for github codespaces instance
+   
+    4  lsb_release -a
+    5  adduser mis481
+    6  usermod -aG sudo mis481
+    7  apt update
+	   apt install sudo
+		
+   19  sudo apt install apache2 -y
+   22  service apache2 status
+   23  sudo service apache2 start
+
+   50  sudo apt update
+   51  sudo apt install mariadb-server -y
+   52  service mariadb status
+   53  sudo service mariadb start
+	   sudo mariadb -u root -p
+ 
+	CREATE USER 'drupal'@'localhost' IDENTIFIED BY 'drupal';
+	CREATE DATABASE drupal;
+	GRANT ALL PRIVILEGES ON drupal.* TO 'drupal'@'localhost';
+	FLUSH PRIVILEGES;
+	EXIT;
+ 
+   CREATE USER 'mis481'@localhost IDENTIFIED BY 'mis481';
+   SELECT User FROM mysql.user;
+   
+   To grant all privileges to mis481:
+   GRANT ALL PRIVILEGES ON *.* TO 'mis481'@localhost IDENTIFIED BY 'mis481';
+   FLUSH PRIVILEGES;
+ 
+   55  php -v
+   67  sudo apt install php libapache2-mod-php php-mysql -y
+   71  sudo apt -y install php php-cgi php-mysqli php-pear php-mbstring libapache2-mod-php php-common php-phpseclib php-mysql
+	8  sudo service apache2 restart
+   60  sudo nano /var/www/html/info.php
+   
+   <?php
+   phpinfo();
+   
+   
+   62  pwd
+   63  cd /var/www/html/
+
+   69  sudo apt install wget -y
+   77  wget -P Downloads https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+   78  ls
+   79  cd Downloads/
+   80  ls
+   81  sudo mkdir /var/www/html/phpMyAdmin
+   82  sudo tar xvf phpMyAdmin-latest-all-languages.tar.gz --strip-components=1 -C /var/www/html/phpMyAdmin
+   83  sudo cp /var/www/html/phpMyAdmin/config.sample.inc.php /var/www/html/phpMyAdmin/config.inc.php
+   84  sudo nano /var/www/html/phpMyAdmin/config.inc.php
+   85  sudo chmod 660 /var/www/html/phpMyAdmin/config.inc.php
+   86  sudo chown -R www-data:www-data /var/www/html/phpMyAdmin
+   87  service apache2 restart
+   
+   
+   
+   https://phoenixnap.com/kb/lamp-debian
+   ufw is not needed
+   download checking is not needed.
+   https://phoenixnap.com/kb/how-to-install-phpmyadmin-on-debian
+   https://phoenixnap.com/kb/how-to-create-mariadb-user-grant-privileges
+   
+   
+
+	
+
+   
+  ******************************************** 
+   Install drupal
+   
+   https://www.rosehosting.com/blog/how-to-install-drupal-on-ubuntu-22-04/
+   
+   drupal database
+   drupal as the user
+   drupal as the password
+   
+
+  
+  drupal 11 (demanding higher version mysql or mariadb)
+  composer create-project drupal/recommended-project drupal 
+  
+  drupal 10 (demand lower level mysql or mariadb)
+  https://www.drupal.org/project/drupal/releases/10.3.2
+  
+  Please create a github account github.com
+  
+  Please visit my github site: https://github.com/mis3250?tab=repositories
+  
+  (1) Build a php codespaces instance on github.
+  (2) Set up mariadb database and user and its permissions.
+  (3) Download phpmyadmin and set it up
+  (4) Upload chapters codes
+  (5) Play with these codes
+  (6) Download drupal and set up drupal.
+  
